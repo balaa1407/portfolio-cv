@@ -493,3 +493,93 @@ a {
         font-size: 1.5rem;
     }
 }
+
+/* ========== INTERACTIVE ELEMENTS ========== */
+/* Particles Background */
+.particles-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+}
+
+/* Terminal Container */
+.terminal-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(10, 10, 20, 0.8);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(0, 255, 204, 0.1);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+.terminal-header {
+    background: rgba(30, 30, 45, 0.9);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-btn {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.terminal-btn.close { background: #ff5f56; }
+.terminal-btn.minimize { background: #ffbd2e; }
+.terminal-btn.maximize { background: #27c93f; }
+
+.terminal-title {
+    margin-left: 15px;
+    color: var(--text-muted);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+}
+
+.terminal-body {
+    padding: 30px;
+}
+
+.terminal-prompt {
+    display: flex;
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+}
+
+.prompt-user {
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+}
+
+/* Glitch Effect */
+.glitched {
+    position: relative;
+    display: inline-block;
+}
+
+.glitched-hover:hover {
+    animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: var(--accent-color);
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}

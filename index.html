@@ -21,6 +21,11 @@
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Particles.js, Vanilla Tilt, Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -80,32 +85,40 @@
 
         <!-- ===== HOME / HERO ===== -->
         <section id="home" class="hero-section">
-            <div class="cyber-grid"></div>
+            <div id="particles-js" class="particles-bg"></div>
             <div class="hero-stage">
-                <div class="hero-text-group" data-aos="fade-up">
-                    <p class="hero-text-greeting">SYSTEM.INIT()</p>
-                    <h1 class="hero-text-name">V Ramya <span class="accent-text">Balaa</span></h1>
-                    <p class="hero-text-subtitle">
-                        <span class="typewriter">Cybersecurity Engineer & SOC Analyst</span>
-                    </p>
-                </div>
                 
-                <div class="hero-content-reveal" data-aos="fade-up" data-aos-delay="200">
-                    <div class="hero-tagline">
-                        <span class="tagline-icon"><i class="fas fa-shield-alt"></i></span>
-                        <span>Cloud Security</span>
-                        <span class="tagline-divider">|</span>
-                        <span class="tagline-icon"><i class="fas fa-network-wired"></i></span>
-                        <span>IoT Security</span>
+                <div class="terminal-container glass-card" data-aos="fade-up">
+                    <div class="terminal-header">
+                        <span class="terminal-btn close"></span>
+                        <span class="terminal-btn minimize"></span>
+                        <span class="terminal-btn maximize"></span>
+                        <div class="terminal-title">root@ramya-sec:~</div>
                     </div>
-                    <p class="hero-summary">
-                        Passionate Cybersecurity professional currently pursuing a B.Tech in CSE (Cybersecurity) at Dayananda Sagar University. Specialize in Threat Modeling, AI Security, IoT Security, and Digital Forensics, building robust defense systems.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn-primary-custom"><i class="fas fa-terminal"></i> View Projects</a>
-                        <a href="#contact" class="btn-outline-custom"><i class="fas fa-envelope"></i> Contact Me</a>
+                    <div class="terminal-body" id="terminal-body">
+                        <p class="hero-text-greeting">SYSTEM.INIT()</p>
+                        <h1 class="hero-text-name">V Ramya <span class="accent-text glitched">Balaa</span></h1>
+                        <p class="hero-text-subtitle">
+                            <span class="typewriter">Cybersecurity Engineer & SOC Analyst</span>
+                        </p>
+                        
+                        <div class="hero-tagline mt-3">
+                            <span class="tagline-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span>Cloud Security</span>
+                            <span class="tagline-divider">|</span>
+                            <span class="tagline-icon"><i class="fas fa-network-wired"></i></span>
+                            <span>IoT Security</span>
+                        </div>
+                        <p class="hero-summary mt-3">
+                            Passionate Cybersecurity professional currently pursuing a B.Tech in CSE (Cybersecurity) at Dayananda Sagar University. Specialize in Threat Modeling, AI Security, IoT Security, and Digital Forensics, building robust defense systems.
+                        </p>
+                        <div class="terminal-prompt mt-4">
+                            <span class="prompt-user">root@ramya-sec:~$</span>
+                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -169,32 +182,41 @@
                 <div class="title-underline" data-aos="fade-up"></div>
 
                 <div class="row g-4 mt-4">
-                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-card glass-card">
-                            <div class="skill-icon"><i class="fas fa-code"></i></div>
-                            <h4>Languages & Frameworks</h4>
-                            <p>Python, C/C++, Java, JavaScript, Streamlit, TensorFlow Lite</p>
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <div class="glass-card p-4 h-100 d-flex align-items-center justify-content-center">
+                            <canvas id="skillsRadar"></canvas>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-card glass-card">
-                            <div class="skill-icon"><i class="fas fa-cloud"></i></div>
-                            <h4>Security & Cloud</h4>
-                            <p>Burp Suite, Nmap, ELK Stack, Metasploit, AWS (EC2/IAM/S3), Kali Linux</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-card glass-card">
-                            <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                            <h4>AI & ML</h4>
-                            <p>Gemma-2B (SLM), QLoRA Fine-tuning, Prompt Engineering, XAI (SHAP/LIME)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-card glass-card">
-                            <div class="skill-icon"><i class="fas fa-shield-virus"></i></div>
-                            <h4>Core Concepts</h4>
-                            <p>LLM Security, Threat Modeling, Zero Trust, Digital Forensics, SIEM, Cryptography</p>
+                    <div class="col-lg-7">
+                        <div class="row g-4">
+                            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="skill-card glass-card" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                                    <h4>Languages & Frameworks</h4>
+                                    <p>Python, C/C++, Java, JavaScript, Streamlit, TensorFlow Lite</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="skill-card glass-card" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                    <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                                    <h4>Security & Cloud</h4>
+                                    <p>Burp Suite, Nmap, ELK Stack, AWS (EC2/IAM/S3), Kali Linux</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="skill-card glass-card" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                                    <h4>AI & ML</h4>
+                                    <p>Gemma-2B (SLM), QLoRA, Prompt Engineering, XAI (SHAP/LIME)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="skill-card glass-card" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                                    <div class="skill-icon"><i class="fas fa-shield-virus"></i></div>
+                                    <h4>Core Concepts</h4>
+                                    <p>LLM Security, Threat Modeling, Zero Trust, Digital Forensics, SIEM</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -217,9 +239,9 @@
 
                 <div class="project-list mt-5">
                     
-                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up">
+                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
                         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                            <h4 class="mb-0 text-white">Enterprise AI-WAF</h4>
+                            <h4 class="mb-0 text-white glitched-hover">Enterprise AI-WAF</h4>
                             <div class="project-stack">
                                 <span>Python</span><span>Streamlit</span><span>Gemma-2B</span><span>QLoRA</span>
                             </div>
@@ -231,9 +253,9 @@
                         </ul>
                     </div>
 
-                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up">
+                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
                         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                            <h4 class="mb-0 text-white">Edge-AI IoT Security System</h4>
+                            <h4 class="mb-0 text-white glitched-hover">Edge-AI IoT Security System</h4>
                             <div class="project-stack">
                                 <span>Python</span><span>TensorFlow Lite</span><span>MQTT</span><span>Raspberry Pi</span>
                             </div>
@@ -245,9 +267,9 @@
                         </ul>
                     </div>
 
-                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up">
+                    <div class="project-item glass-card mb-4 p-4" data-aos="fade-up" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
                         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                            <h4 class="mb-0 text-white">SIEM + Threat Detection System</h4>
+                            <h4 class="mb-0 text-white glitched-hover">SIEM + Threat Detection System</h4>
                             <div class="project-stack">
                                 <span>ELK Stack</span><span>Python</span><span>Kibana</span>
                             </div>
@@ -260,7 +282,7 @@
 
                 </div>
 
-                <div class="glass-card mt-5 p-4 highlight-card border-accent" data-aos="fade-up">
+                <div class="glass-card mt-5 p-4 highlight-card border-accent" data-aos="fade-up" data-tilt data-tilt-max="3" data-tilt-glare data-tilt-max-glare="0.1">
                     <h4 class="text-accent mb-3"><i class="fas fa-book-open"></i> Research Publication</h4>
                     <h5 class="text-white">Explainable AI for Network Intrusion Detection: A Survey and Real-Time Applications in IoT and Industrial Systems</h5>
                     <p class="text-muted text-sm fst-italic">V Ramya Balaa, Tushar Raveendra Malagi, G. Hemanth Kumar, Dilip Kumar Jang Bahadur Saini — Dept. of CSE Cyber Security, DSU | 2025</p>
@@ -280,7 +302,7 @@
 
                 <div class="row g-4 mt-4">
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="glass-card h-100 p-4 text-center achievement-card">
+                        <div class="glass-card h-100 p-4 text-center achievement-card" data-tilt data-tilt-max="15">
                             <i class="fas fa-trophy text-accent fa-3x mb-3"></i>
                             <h5 class="text-white">Top 10 Nationally</h5>
                             <p class="text-accent text-sm">Hackathon-X CTF (2025)</p>
@@ -288,7 +310,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="glass-card h-100 p-4 text-center achievement-card">
+                        <div class="glass-card h-100 p-4 text-center achievement-card" data-tilt data-tilt-max="15">
                             <i class="fas fa-medal text-accent fa-3x mb-3"></i>
                             <h5 class="text-white">Top 15</h5>
                             <p class="text-accent text-sm">Byte Bounty CTF (2023) & Techflix CTF (2025)</p>
@@ -296,7 +318,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="glass-card h-100 p-4 text-center achievement-card">
+                        <div class="glass-card h-100 p-4 text-center achievement-card" data-tilt data-tilt-max="15">
                             <i class="fas fa-rocket text-accent fa-3x mb-3"></i>
                             <h5 class="text-white">Selected Participant</h5>
                             <p class="text-accent text-sm">NASA Space Apps Challenge (2024, 2025)</p>
